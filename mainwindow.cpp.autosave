@@ -92,7 +92,8 @@ void MainWindow::onHygrometrieCapteur3ButtonClicked()
     client->envoieHygrometrieCapteur3();
 }
 
-void MainWindow::onTemperatureReadyRead() // La fonction vérifie les informations envoyés par le serveur pui vérifie si c'est un td , un tf et hr et va afficher le résultat au bonne endroit
+void MainWindow::onTemperatureReadyRead() 
+// La fonction vérifie les informations envoyés par le serveur pui vérifie si c'est un td , un tf et hr et va afficher le résultat au bonne endroit
 {
     char message = client->receptiondonnees();
     QByteArray data;
@@ -101,39 +102,48 @@ void MainWindow::onTemperatureReadyRead() // La fonction vérifie les informatio
 
 
 
-    if(donnees.data()[0] == 'T' && donnees.data()[1] == 'd' && donnees.data()[3] == '1' ) // vérifie si les données commence par un Td et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    if(donnees.data()[0] == 'T' && donnees.data()[1] == 'd' && donnees.data()[3] == '1' ) 
+        // vérifie si les données commence par un Td et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->CelsiusCapteur1Label->setText(""+donnees+" °C");
     }
-    else if(donnees.data()[0] == 'T' && donnees.data()[1] == 'd' && donnees.data()[3] == '2' ) // vérifie si les données commence par un Td et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] == 'T' && donnees.data()[1] == 'd' && donnees.data()[3] == '2' ) 
+        // vérifie si les données commence par un Td et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->CelsiusCapteur2Label->setText(""+donnees+" °C");
     }
-    else if(donnees.data()[0] == 'T' && donnees.data()[1] == 'd' && donnees.data()[3] == '3' ) // vérifie si les données commence par un Td et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] == 'T' && donnees.data()[1] == 'd' && donnees.data()[3] == '3' ) 
+        // vérifie si les données commence par un Td et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->CelsiusCapteur3Label->setText(""+donnees+" °C");
     }
-    else if(donnees.data()[0] =='T' && donnees.data()[1] =='f' && donnees.data()[3] == '1') // vérifie si les données commence par un Tf et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] =='T' && donnees.data()[1] =='f' && donnees.data()[3] == '1') 
+        // vérifie si les données commence par un Tf et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->FahrenheitCapteur1label->setText(""+donnees+" F");
     }
-    else if(donnees.data()[0] =='T' && donnees.data()[1] =='f' && donnees.data()[3] == '2') // vérifie si les données commence par un Tf et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] =='T' && donnees.data()[1] =='f' && donnees.data()[3] == '2') 
+        // vérifie si les données commence par un Tf et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->FahrenheitCapteur2label->setText(""+donnees+" F");
     }
-    else if(donnees.data()[0] =='T' && donnees.data()[1] =='f' && donnees.data()[3] == '3') // vérifie si les données commence par un Tf et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] =='T' && donnees.data()[1] =='f' && donnees.data()[3] == '3') 
+        // vérifie si les données commence par un Tf et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->FahrenheitCapteur3label->setText(""+donnees+" F");
     }
-    else if(donnees.data()[0] =='H' && donnees.data()[1] == 'r' && donnees.data()[3] == '1') // vérifie si les données commence par un Hr et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] =='H' && donnees.data()[1] == 'r' && donnees.data()[3] == '1') 
+        // vérifie si les données commence par un Hr et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->HygrometrieCapteur1label->setText(""+donnees+" %");
     }
-    else if(donnees.data()[0] =='H' && donnees.data()[1] == 'r' && donnees.data()[3] == '2') // vérifie si les données commence par un Hr et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] =='H' && donnees.data()[1] == 'r' && donnees.data()[3] == '2') 
+        // vérifie si les données commence par un Hr et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->HygrometrieCapteur1label->setText(""+donnees+" %");
     }
-    else if(donnees.data()[0] =='H' && donnees.data()[1] == 'r' && donnees.data()[3] == '3') // vérifie si les données commence par un Hr et vérifie le numéro du capteur si oui il affiche dans le bon label la données
+    else if(donnees.data()[0] =='H' && donnees.data()[1] == 'r' && donnees.data()[3] == '3') 
+        // vérifie si les données commence par un Hr et vérifie le numéro du capteur si oui il affiche dans le bon label la données
     {
         ui->HygrometrieCapteur1label->setText(""+donnees+" %");
     }

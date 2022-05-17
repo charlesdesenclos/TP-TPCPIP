@@ -20,7 +20,7 @@ bool clienttcp::connectToHost(QString ip , uint port)
 {
     struct hostent *hostinfo = NULL;
     SOCKADDR_IN sin = { 0 }; /* initialise la structure avec des 0 */
-    const char *hostname = "www.developpez.com";
+    const char *hostname = ip.toStdString().c_str();
 
     hostinfo = gethostbyname(hostname); /* on récupère les informations de l'hôte auquel on veut se connecter */
     if (hostinfo == NULL) /* l'hôte n'existe pas */
@@ -46,9 +46,10 @@ char clienttcp::envoieCelsiusCapteur1()
     sock;
     char buffer[1024];
 
+
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Td01?\n)");
         exit(errno);
     }
 }
@@ -60,7 +61,7 @@ char clienttcp::envoieCelsiusCapteur2()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Td02?\n)");
         exit(errno);
     }
 }
@@ -72,7 +73,7 @@ char clienttcp::envoieCelsiusCapteur3()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Td03?\n)");
         exit(errno);
     }
 }
@@ -84,7 +85,7 @@ char clienttcp::envoieFahrenheitCapteur1()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Tf01?\n)");
         exit(errno);
     }
 }
@@ -96,7 +97,7 @@ char clienttcp::envoieFahrenheitCapteur2()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Tf02?\n)");
         exit(errno);
     }
 }
@@ -108,19 +109,19 @@ char clienttcp::envoieFahrenheitCapteur3()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Tf03?\n)");
         exit(errno);
     }
 }
 
 char clienttcp::envoieHygrometrieCapteur1()
 {
-    SOCKET sock;
+    sock;
     char buffer[1024];
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Hr01?\n)");
         exit(errno);
     }
 }
@@ -132,7 +133,7 @@ char clienttcp::envoieHygrometrieCapteur2()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Hr02\n)");
         exit(errno);
     }
 }
@@ -144,7 +145,7 @@ char clienttcp::envoieHygrometrieCapteur3()
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send()");
+        perror("send(Hr03\n)");
         exit(errno);
     }
 }
