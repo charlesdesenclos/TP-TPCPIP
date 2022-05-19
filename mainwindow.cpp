@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "clienttcp.h"
 
@@ -17,16 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     else {
         ui->statusLabel->setText("Création socket faled");
     }
-    QObject::connect(ui-> connectButton, SIGNAL(clicked()), this, SLOT(onConnectButtonClicked()));
-    QObject::connect(ui->CelsiusCapteur1pushButton, SIGNAL(clicked()), this, SLOT(onCelsiusCapteur1ButtonClicked()));
-    QObject::connect(ui->CelsiusCapteur2pushButton, SIGNAL(clicked()), this, SLOT(onCelsiusCapteur2ButtonClicked()));
-    QObject::connect(ui->CelsiusCapteur3pushButton, SIGNAL(clicked()), this, SLOT(onCelsiusCapteur3ButtonClicked()));
-    QObject::connect(ui->FahrenheitCapteur1pushButton, SIGNAL(clicked()), this, SLOT(onFahrenheitCapteur1ButtonClicked()));
-    QObject::connect(ui->FahrenheitCapteur2pushButton, SIGNAL(clicked()), this, SLOT(onFahrenheitCapteur2ButtonClicked()));
-    QObject::connect(ui->FahrenheitCapteur3pushButton, SIGNAL(clicked()), this, SLOT(onFahrenheitCapteur3ButtonClicked()));
-    QObject::connect(ui->HygrometrieCapteur1pushButton, SIGNAL(clicked()), this, SLOT(onHygrometrieCapteur1ButtonClicked()));
-    QObject::connect(ui->HygrometrieCapteur2pushButton, SIGNAL(clicked()), this, SLOT(onHygrometrieCapteur2ButtonClicked()));
-    QObject::connect(ui->HygrometrieCapteur3pushButton, SIGNAL(clicked()), this, SLOT(onHygrometrieCapteur3ButtonClicked()));
+
 
 
 }
@@ -40,10 +31,10 @@ void MainWindow::onConnectButtonClicked()
 
     if(client-> connectToHost(ip, port))
     {
-        ui->statusLabel->setText("Connexion à" + ip +":"+ QString::number(port) +"a réussi");
+        ui->statusLabel->setText("Connexion à " + ip + " : "+ QString::number(port) +" a réussi ");
     }
     else {
-        ui->statusLabel->setText("Connexion à" + ip +":"+ QString::number(port) +"a échoué");
+        ui->statusLabel->setText("Connexion à " + ip + " : "+ QString::number(port) +" a échoué ");
     }
 }
 

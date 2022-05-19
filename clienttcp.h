@@ -20,6 +20,8 @@ typedef struct in_addr IN_ADDR;
 class clienttcp
 {
     SOCKET sock;
+    SOCKET * buf;
+    char buffer;
     bool initDone;
 public:
     clienttcp();

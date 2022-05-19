@@ -43,125 +43,150 @@ bool clienttcp::connectToHost(QString ip , uint port)
 
 char clienttcp::envoieCelsiusCapteur1()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Td01?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Td01?\n)");
+
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieCelsiusCapteur2()
 {
-    sock;
-    char buffer[1024];
+    QString message ="Td02?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
+
+
+
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Td02?\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieCelsiusCapteur3()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Td03?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Td03?\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieFahrenheitCapteur1()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Tf01?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Tf01?\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieFahrenheitCapteur2()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Tf02?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Tf02?\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieFahrenheitCapteur3()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Tf03?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Tf03?\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieHygrometrieCapteur1()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Hr01?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Hr01?\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieHygrometrieCapteur2()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Hr02?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Hr02\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::envoieHygrometrieCapteur3()
 {
-    sock;
-    char buffer[1024];
+
+    QString message ="Hr03?";
+    QByteArray mes = message.toLocal8Bit();
+    const char *buffer =mes.data();
 
     if(send(sock, buffer, strlen(buffer), 0) < 0)
     {
-        perror("send(Hr03\n)");
+        perror("send()");
         exit(errno);
     }
 }
 
 char clienttcp::receptiondonnees()
 {
-    char buffer[1024];
-    int n = 0;
-
-    if((n = recv(sock, buffer, sizeof buffer - 1, 0)) < 0)
+    if(sock != INVALID_SOCKET)
     {
-        perror("recv()");
-        exit(errno);
+        int nbRecv = ::recv(sock, buf, 1024, 0);
+
+        for(int i = 0; i< nbRecv; i++)
+        {
+            buffer.push_back(buf[i]);
+        }
+        return  nbRecv;
     }
 
-    buffer[n] = '\0';
+    return -1;
+
+
 }
 
 
